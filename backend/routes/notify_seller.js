@@ -18,18 +18,18 @@ const transporter = nodemailer.createTransport({
 });
 
 // API endpoint to handle book purchase notification
-router.post('/:id', (req, res) => {
+router.post('/:id', async (req, res) => {
     const { sellerEmail, bookTitle } = req.body;
 
     // Send email notification to seller
-    sendNotificationEmail(sellerEmail, bookTitle);
+    await sendNotificationEmail(sellerEmail, bookTitle);
 
     res.status(200).json({ success: true, message: 'Notification sent to seller successfully' });
 });
 
 // Function to send notification email to seller
-const sendNotificationEmail = (sellerEmail, bookTitle) => {
-    transporter.sendMail({
+const sendNotificationEmail = async (sellerEmail, bookTitle) => {
+    await transporter.sendMail({
         from: 'shaikmohsin5891@gmail.com',
         to: sellerEmail,
         subject: 'BookXchange - New Purchase Interest',
