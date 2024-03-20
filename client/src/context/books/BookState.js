@@ -67,7 +67,7 @@ const BookState = (props) => {
 
             });
             const json = await response.json();
-            // console.log(sellerEmail,bookTitle)
+            console.log(sellerEmail,bookTitle)
            // setBookDetails(json);
           
         }
