@@ -1,0 +1,234 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes product-info{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+
+body{
+  background-color: #232323;
+  color: #fff;
+}
+.main-content{
+  width: 80%;
+  padding: 10px 40px;
+  background-color: #343434;
+  border-radius: 5px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #fff;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 3px 10px;
+}
+.navbar{
+  padding: 4px 30px 10px 0px;
+  border-bottom: #232323 3px solid;
+}
+.page-content{
+  text-align: center;
+  padding-top: 40px;
+}
+.products-list{
+  width: 70%;
+  padding: 10px 30px;
+  background-color: #343434;
+  border-radius: 10px;
+  margin: 5px auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #fff;
+}
+.products-detail{
+  display: flex;
+}
+.product-image{
+  width: 140px;
+  height: 140px;
+  border-radius: 5px;
+  padding: 10px 10px;
+  margin: 0px 10px;
+}
+.product-specs{
+  text-align: left;
+  margin: 0px 10px;
+  
+}
+span{
+  color: #FF5733;
+}
+p{
+  font-size: 12px;
+  margin: 2px 0px 2px 0px;
+}
+h3{
+  margin: 10px 0px 10px 0px;
+}
+.product-info{
+  width: 70%;
+  padding: 5px 0px;
+  text-align: left;
+  display: flex;
+}
+.btn{
+  padding: 6px 20px;
+  border-radius: 3px;
+  border: none;
+  margin-left: 5px;
+}
+.btn-primary{
+  background-color: #16A085;
+}
+.btn-secondary{
+  background-color: #FF5733;
+}
+.btn-secondary{
+  background-color: #FF5733;
+}
+.btn-back{
+padding: 6px 20px;
+  border-radius: 15px;
+  border: none;
+background-color:#FF3131;
+color: white;
+}
+.product-page{
+padding: 20px 50px;
+/* border: solid 3px green; */
+}
+.product-desc{
+display: flex;
+width: 100%;
+/* border: solid 3px red; */
+}
+.product-desc-image{
+margin-right: 20px;
+}
+.product-details-info{
+margin-left: 40px;
+text-align: left;
+}
+.product-desc-p{
+margin-top: 4px;
+font-size: 14px;
+}
+.product-desc-details{
+text-align: left;
+margin: 20px 0px;
+}
+.product-details-desc{
+margin-top: 60px;
+font-size: 16px;
+}
+
+/* BookDetailsPage.css */
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: black;
+  font-size: 30px;
+}
+
+.modal button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Order Confirmation Message */
+.order-confirmation {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #dff0d8; /* Light green */
+  border: 1px solid #c3e6cb; /* Border color */
+  border-radius: 8px;
+  color: black;
+  font-size: 30px;
+}
+
+/* Disclaimer */
+.disclaimer {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8d7da; /* Light red */
+  border: 1px solid #f5c6cb; /* Border color */
+  border-radius: 8px;
+  color: black;
+}
