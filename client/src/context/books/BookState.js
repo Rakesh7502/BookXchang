@@ -2,7 +2,7 @@ import { useState } from "react";
 import bookContext from "./bookContext";
 
 const BookState = (props) => {
-    const host = "http://localhost:9000"
+    const host = "https://book-xchange.vercel.app/"
     const BooksInitial = [];
     const prod_info = [];
     const [books, setBooks] = useState(BooksInitial)
