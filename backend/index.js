@@ -7,7 +7,11 @@ const port = 9000
 var cors = require('cors')
 
 // app.use(bodyParser.json());
-app.use(cors())
+app.use(cors({
+   origin: 'https://BookXchange.vercel.app',
+   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}))
 
 app.use(express.json())
 //available routess
