@@ -8,7 +8,7 @@ var cors = require('cors')
 
 // app.use(bodyParser.json());
 app.use(cors({
-   origin: 'https://book-xchange.vercel.app',
+   origin: ['https://book-xchange-client.vercel.app/'],
    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }))
