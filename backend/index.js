@@ -15,7 +15,7 @@ app.use(cors({
 
 app.use(express.json())
 //available routess
-app.get("/"(res,req)=>{res.json("Hello")})
+app.get("/",(res,req)=>{res.json("Hello")})
 app.use('/api/auth',require('./routes/auth'))
 app.use('/api/books',require('./routes/books'))
 app.use('/api/books/viewBookDetails',require('./routes/notify_seller'))
