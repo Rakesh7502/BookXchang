@@ -38,7 +38,7 @@ function App() {
           <Navbar showAlert={showAlert} />
           <Alerts alert={alert} />
 
-          <div className="container">
+          <div >
             <Routes>
               <Route exact path="/" element={<Home showAlert={showAlert} />} />
               <Route exact path="/about" element={<About />} />
