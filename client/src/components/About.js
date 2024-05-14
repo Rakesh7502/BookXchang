@@ -1,6 +1,6 @@
 
 import { useEffect, React ,useState} from 'react';
-import CountUp from 'react-countup';
+
 
 const About = () => {
   const [counter, setCounter] = useState(0);
