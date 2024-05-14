@@ -10,7 +10,7 @@ const Login = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(credentials.email)
-        const response = await fetch(`https://book-xchange.vercel.app/api/auth/login`, {
+        const response = await fetch(`http://localhost:9000/api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ const Login = (props) => {
         setCrediantials({ ...credentials, [e.target.name]: e.target.value })
     }
     return (
-        <div className='mt-5'>
+        <div className='signup-container'>
             <h2>Login to continue to BookXchange Services </h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
