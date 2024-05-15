@@ -8,7 +8,6 @@ const SignUp = (props) => {
         e.preventDefault();
         const {name,email,password}=credentials;
        
-       https://book-xchange.vercel.app/api/auth/
         const response = await fetch(` https://book-xchange.vercel.app/api/auth/createuser`, {
             method: 'POST',
             headers: {
