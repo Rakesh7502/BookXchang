@@ -8,6 +8,7 @@ const nodemailer = require('nodemailer');
 //ROUTE 1-Get all the Books using:GET "/api/books/fetchallbooks".
 router.get('/fetchallbooks' ,async (req, res) => {
     try {
+        
         const books = await Books.find({ })
 
         res.json(books)
