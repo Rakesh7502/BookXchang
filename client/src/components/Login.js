@@ -7,10 +7,11 @@ const Login = (props) => {
 
     const [credentials, setCrediantials] = useState({ email: "", password: "" })
     let navigate = useNavigate();
+    const [shake, setShake] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(credentials.email)
-        const response = await fetch(`https://book-xchange.vercel.app/api/auth/login`, {
+        // console.log(credentials.email)
+        const response = await fetch(`http://localhost:9000/api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,7 +22,7 @@ const Login = (props) => {
 
         });
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         if (json.success) {
             //save authtoken  and redirect
             localStorage.setItem("name", credentials.email)
@@ -31,8 +32,11 @@ const Login = (props) => {
             navigate("/");
         }
         else {
-            console.log("invalid credintials", json.success)
+            // console.log("invalid credintials", json.success)
+            setShake(true); // Trigger shake animation
+            setTimeout(() => setShake(false), 500); // Disable animation after 500ms
             props.showAlert("Invalid Credintials", "danger")
+
         }
 
     }
@@ -40,9 +44,9 @@ const Login = (props) => {
         setCrediantials({ ...credentials, [e.target.name]: e.target.value })
     }
     return (
-        <div className='signup-container'>
+        <div className={`signup-container`}>
             <h2>Login to continue to BookXchange Services </h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={`${shake ? 'shake' : ''}`} >
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input type="email" className="form-control" id="email" name='email' aria-describedby="emailHelp" value={credentials.email} onChange={onChange} />
