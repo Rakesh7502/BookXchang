@@ -1,0 +1,213 @@
+/* SellPage.css */
+.sell-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  header {
+    margin-bottom: 20px;
+  }
+  
+  header h1 {
+    font-size: 2.5em;
+    color: white;
+  }
+  
+  .sell-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    gap: 15px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sell-form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .sell-form input,
+  .sell-form textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .sell-form button {
+    padding: 15px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sell-form button:hover {
+    background-color: #45a049;
+  }
+  
+  .book-list {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 40px;
+  }
+  
+  .book-list h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+  }
+  
+  .books-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .book-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 200px;
+  }
+  
+  .book-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .book-info {
+    padding: 15px;
+  }
+  
+  .book-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .book-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  @media (max-width: 768px) {
+    .sell-form,
+    .book-list {
+      width: 90%;
+    }
+  
+    .book-card {
+      width: 45%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sell-form,
+    .book-list {
+      width: 100%;
+    }
+  
+    .book-card {
+      width: 90%;
+    }
+  }
+  .card-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-title {
+    margin: 0; /* Remove default margin */
+    flex: 1;   /* Allow title to take up remaining space */
+  }
+  
+  .trash-icon {
+    cursor: pointer; /* Change cursor on hover */
+  }
+  .card .card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+  
+  .card-body {
+    padding: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .card-title-container {
+      flex-direction: row; /* Ensure items stay in a row on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card-title {
+      font-size: 14px; /* Adjust font size for smaller screens */
+    }
+  
+    .trash-icon {
+      font-size: 18px; /* Adjust icon size for smaller screens */
+    }
+  }
+
+  .alert {
+    z-index: 2;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:green; /* Red background */
+    color: white; /* White text */
+    padding: 20px; /* Padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow */
+    font-size: 18px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Centered text */
+    animation: slideIn 0.5s, slideOut 0.5s 3.5s; /* Animation */
+  }
+  
+  /* Keyframe animations */
+  @keyframes slideIn {
+    from {
+      top: -100px;
+      opacity: 0;
+    }
+    to {
+      top: 50%;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      top: 50%;
+      opacity: 1;
+    }
+    to {
+      top: -100px;
+      opacity: 0;
+    }
+  }
+  
+  

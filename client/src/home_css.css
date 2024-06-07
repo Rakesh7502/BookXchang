@@ -1,0 +1,485 @@
+
+/* home-css */
+.home-body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+.mySlides {
+    display: none;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  
+  /* Slideshow container */
+  .home-slideshow-container {
+    /* max-width: 1000px; */
+    position: relative;
+    margin: auto;
+   
+    width: 10px;
+  }
+  
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+    width:100%;
+  }
+  
+  @keyframes fade {
+    from {
+      opacity: 0.4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* On smaller screens, decrease text size */
+  @media only screen and (max-width: 300px) {
+    .text {
+      font-size: 11px;
+    }
+  }
+  
+  .home-slideshow-container {
+    position: relative;
+    text-align: center;
+    color: white;
+    width: 100%;
+    /* border: 2px solid red; */
+    
+
+  }
+  .mySlides{
+    height: 500px;
+    font-size: 100px;
+
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    text-align: center;
+    white-space: nowrap; /* Prevents text from wrapping */
+    animation: writeText 5s linear forwards;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    /* color: red; */
+  }
+  .slide-font {
+    /* font-size: 50px; */
+    
+    font-family: 'Oswald','Pacifico','Playfair Display','Roboto Slab'; /* Use Montserrat font */
+    font-size: 43px; /* Adjust font size as needed */
+    font-weight: bold; /* Make the text bold */
+    color: #fff; /* Set text color to white */
+    text-align: center; /* Center-align the text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle text shadow */
+    margin-top: 50px; /* Adjust top margin */
+    
+  }
+  .ctrl-buttons{
+   
+    /* border: 2px solid rgb(10, 229, 94); */
+    /* z-index: 10; */
+    position: absolute;
+    top: 70%;
+    left: 35%;
+   
+ 
+    font-size: 35px;
+    text-align: center;
+    white-space: nowrap; /* Prevents text from wrapping */
+    /* animation: writeText 5s linear forwards; */
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    
+  }
+  
+  @media only screen and (max-width: 768px) {
+      .centered p{
+        font-size: 18px;
+      }
+    }
+  
+  .first-letter {
+    color: orange;
+  }
+  
+  @keyframes writeText {
+    from {
+      transform: translateX(-75%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  .intro{
+      background-color:  #8080804a;
+  }
+  
+  .description{
+     
+          display: flex;
+          flex-direction: row;
+          margin-top: 50px;
+          margin-bottom: 50px;
+  }
+  .headline ,.para{
+      width:50%;
+      padding:20px;
+      box-sizing: border-box;
+  }
+  
+  .headline{
+      margin-top: 50px;
+  }
+  
+  
+  
+  footer {
+      background-color: #333; /* Grey background color for the footer */
+      color: #fff; /* White text color */
+      padding: 30px 0; /* Padding to add space above and below the footer content */
+    }
+  
+    .footer-content {
+      width: 80%; /* Adjust width as needed */
+      margin: 0 auto; /* Center the content horizontally */
+      display: flex;
+      justify-content: space-between; /* Space out the items evenly */
+      align-items: flex-start; /* Align items to the top */
+    }
+    
+    .contact-info,
+    .social-media {
+      flex: 1; /* Each section takes up equal space */
+    }
+    
+    .contact-info h3,
+    .social-media h3 {
+      color: #fff; /* White text color */
+    }
+    
+    .contact-info p {
+      margin: 0; /* Remove default margin */
+    }
+    
+    .social-media ul {
+      list-style-type: none; /* Remove bullet points */
+      padding: 0; /* Remove default padding */
+    }
+    
+    .social-media ul li {
+      margin-bottom: 10px; /* Add spacing between social media links */
+    }
+    
+    .social-media ul li a {
+      color: #fff; /* White text color for links */
+      text-decoration: none; /* Remove underline from links */
+    }
+    
+    .copyright {
+      text-align: center; /* Center-align copyright text */
+      margin-top: 20px; /* Add space above copyright text */
+    }
+  
+  .social-media ul li a .fab.fa-facebook-f {
+      color: #1877f2; /* Blue color similar to Facebook's brand color */
+    }
+  
+    .social-media ul li a .fab.fa-twitter {
+      color: #1DA1F2; /* Blue color similar to Twitter's brand color */
+    }
+    /* Include Font Awesome CSS file */
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+  
+  /* Style the LinkedIn icon */
+  .social-media ul li a .fab.fa-linkedin {
+    color: #0077B5; /* LinkedIn brand color */
+  }
+
+      /* Header Styles */
+   
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    header p {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    /* Main Content Styles */
+    .home-container {
+        max-width: 1200px;
+        margin: 5px auto;
+        padding: 20px;
+    }
+    .home-container section h2{
+      font-size:40px ;
+      text-align: center;
+    }
+    .home-container section p{
+      font-size:20px ;
+      text-align: center;
+      color: #717171;
+    }
+
+    .section {
+        margin-bottom: 40px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .cta-buttons {
+        margin-top: 20px;
+    }
+
+    .cta-buttons .button {
+        font-size: 18px;
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .featured-books {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .book {
+        margin: 20px;
+        text-align: center;
+        width: 200px;
+    }
+
+    .book img {
+        width: 150px;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .book p {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    /* Testimonials Section */
+    /* .testimonials {
+        background-color: #f0f0f0;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .testimonial {
+        margin-bottom: 20px;
+    }
+
+    .testimonial p {
+        font-size: 16px;
+    } */
+    /* Testimonials.css */
+    /* Testimonials.css */
+.testimonials {
+  /* border: 2px solid red; */
+  margin-top:10px;
+  text-align: center;
+  padding: 50px 20px;
+  background: #f9f9f9;
+}
+
+.testimonials h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.testimonial-container {
+  position: relative;
+  width: 100%;
+  height: 200px; /* Adjust as needed */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.testimonial {
+  opacity: 0;
+  position: absolute;
+  width: 80%; /* Adjust as needed */
+  transition: opacity 1s ease-in-out;
+  transform: translateX(100%);
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  font-size: 1.2em;
+  line-height: 1.5;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.testimonial.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+
+
+
+    /* How It Works Section */
+    .how-it-works {
+        padding: 40px 20px;
+        text-align: center;
+        
+        /* border: 2px solid red; */
+    }
+
+    .how-it-works-item img{
+      /* height: 60px; */
+      /* border-radius: 100%; */
+    }
+      /* /* float: left;  */
+
+    
+    
+    .how-it-works-item {
+        margin-bottom: 20px;
+       
+
+    }
+    .how-it-works-item {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      margin: 10px 0;
+    }
+    
+    .how-it-works-item img {
+      width: 30px; /* Adjust the size as needed */
+      height: 30px; /* Ensure the icon remains square */
+       margin-right: 10px; 
+       /* Space between the image and the text  */
+    } 
+    
+    .how-it-works-item p {
+      margin: 0;
+      font-size: 16px; /* Adjust the font size as needed */
+    }
+    
+    /* Responsive adjustments if needed */
+    @media (max-width: 600px) {
+      .how-it-works-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    
+      .how-it-works-item img {
+        margin-right: 0;
+        margin-bottom: 5px;
+      }
+    }
+    
+
+    /* Benefits Section */
+    .benefits {
+        background-color: #333;
+        color: #fff;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .benefits h2 {
+        color: #fff;
+    }
+
+    .benefit-item {
+        margin-bottom: 20px;
+    }
+
+    /* Footer Styles */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    footer a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+    }

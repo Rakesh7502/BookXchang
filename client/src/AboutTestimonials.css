@@ -1,0 +1,45 @@
+.container3 {
+    overflow: hidden; /* Hide overflowing content */
+  }
+  
+  .contents-wraper {
+    display: flex;
+    flex-direction: column; /* Arrange contents vertically */
+  }
+  
+  .testRow {
+    display: flex;
+    flex-direction: column; /* Arrange testimonials vertically */
+  }
+  
+  .testItem {
+    opacity: 0; /* Initially hide testimonials */
+    transition: opacity 1s; /* Smooth transition for opacity */
+  }
+  
+  .testItem.active {
+    opacity: 1; /* Show active testimonial */
+  }
+  
+  .testItem img {
+    width: 100px; /* Adjust image width */
+    border-radius: 50%; /* Make image round */
+  }
+  
+  .testItem h3, .testItem h4 {
+    margin: 5px 0; /* Adjust margin for name and location */
+  }
+  
+  .testItem p {
+    margin: 10px 0; /* Adjust margin for text */
+  }
+  
+  @keyframes slideAnimation {
+    0% {
+      transform: translateY(-100%); /* Start from above */
+    }
+    100% {
+      transform: translateY(0); /* Slide down */
+    }
+  }
+  
