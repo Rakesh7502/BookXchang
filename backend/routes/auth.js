@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const fetchuser = require("../middleware/fetchuser")
 const JWT_SECRET = "MOsin";
+
 //ROUTE 1:create a user using:post "/api/auth/" .Doesnt require auth .N o login required
 router.post('/createuser',
     [body('email', "enter a valid email").isEmail(), body('name', "enter a valid name").isLength({ min: 5 }), body('password', "enter a valid password").isLength({ min: 5 })],
