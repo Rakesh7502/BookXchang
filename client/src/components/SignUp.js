@@ -2,6 +2,7 @@ import React ,{useState}from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const SignUp = (props) => {
+    
     const [credentials,setCrediantials]=useState({name:"",email:"",password:"",cpassword:"",phone:""})
     let navigate=useNavigate();
     const [shake, setShake] = useState(false); // State to control animation
