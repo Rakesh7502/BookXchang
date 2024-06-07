@@ -1,15 +1,40 @@
-import { React, useContext, useState } from 'react'
+import { React, useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import bookContext from '../context/books/bookContext'
-import confetti from 'confetti-js'; 
+import confetti from 'confetti-js';
 import confirm_order from './confirm_order.gif';
-import java2 from './java2.webp'
+// import java2 from './java2.webp'
 import BookItem from './BookItem';
+import { useNavigate } from 'react-router-dom';
 const Product_details = (props) => {
-
-
+    const { id } = useParams()
+    const navigate = useNavigate();
     const context = useContext(bookContext)
-    const { book_details, sendEmailToSeller} = context
+    const { book_details, sendEmailToSeller, viewBook } = context
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        const fetchBookDetails = async () => {
+            if (localStorage.getItem('token')) {
+                console.log(id);
+                await viewBook(id);
+                setIsLoading(false);
+            } else {
+                navigate('/login');
+            }
+        };
+        fetchBookDetails();
+        // eslint-disable-next-line
+    }, [id, viewBook, navigate]);
+
+    // console.log(book_details)
+    const [buyerDetails, setBuyerDetails] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
+    // viewBook(props.id)
+
     // console.log("produc")
     // console.log(book_details)
     const [isConfirmationModalOpen, setConfirmationModalOpen] = useState(false);
@@ -17,7 +42,9 @@ const Product_details = (props) => {
 
     const handleBuyNow = () => {
         // console.log(book_details._id);
+        // console.log("produc")
 
+        // console.log(book_details)
         setConfirmationModalOpen(true);
     };
 
@@ -27,7 +54,8 @@ const Product_details = (props) => {
             setConfirmationModalOpen(false);
             setOrderConfirmed(true);
 
-            sendNotificationToSeller(book_details._id,book_details.seller_gmail,book_details.title); // Call function to send notification to seller
+            // sendNotificationToSeller(book_details._id,book_details.seller_gmail,book_details.title); // Call function to send notification to seller
+            sendNotificationToSeller(book_details, buyerDetails)
             // console.log(book_details._id,book_details.gmail);
             showConfetti(); // Show confetti animation
             setTimeout(() => {
@@ -39,29 +67,48 @@ const Product_details = (props) => {
     const cancelOrder = () => {
         setConfirmationModalOpen(false);
     };
+    const handleInputChange = (e) => {
+        setBuyerDetails({ ...buyerDetails, [e.target.name]: e.target.value });
+    };
 
-    const sendNotificationToSeller = (id,gmail,book_name) => {
+    const sendNotificationToSeller = (book_details, buyerDetails) => {
         // Simulate sending notification to seller, replace with actual API call
-        sendEmailToSeller(id,gmail,book_name);
+        sendEmailToSeller(book_details, buyerDetails);
 
-        console.log('Notification sent to seller');
-        
+        // console.log('Notification sent to seller');
+        // console.log(book_details)
+
     };
 
     const showConfetti = () => {
         // Show confetti animation
         // console.log('Confetti animation triggered');
-        
+
         // You can use a library like confetti-js to add confetti animation
         // Example usage: https://www.npmjs.com/package/confetti-js
     };
+    const isFormValid = () => {
+        // Check if all required fields have values
+        return (
+          buyerDetails.name !== "" &&
+          buyerDetails.email !== "" &&
+          buyerDetails.phone !== "" &&
+          buyerDetails.message !== ""
+        );
+      };
+      
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div>
             <div class="page-content">
                 <div class="product-page">
                     <div class="product-desc">
                         <div class="product-desc-image">
-                            <img src={java2} width="280" height="320" />
+                            {console.log(book_details)}
+                            <img src={require(`../images/${book_details.image}`)} width="280" height="320" />
                         </div>
                         <div class="product-details-info">
                             <h1>{book_details.title}</h1>
@@ -78,7 +125,7 @@ const Product_details = (props) => {
                                 <h3>Product Description</h3>
                                 <p class="product-desc-p">
                                     {book_details.description}
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia tenetur ipsa quidem, molestias maiores maxime laboriosam exercitationem enim, labore nostrum reiciendis? moora tempore neque, eveniet veniam nam fuga, cupiditate ad similique non quod, alias placeat iusto aspernatur ullam deserunt! Ab eaque perspiciatis hic modi. Reiciendis velit vero dignissimos blanditiis, eaque ad enim eveniet cumque quis ipsum placeat. Inventore dolores a
+
                                 </p>
                             </div>
                         </div>
@@ -90,9 +137,30 @@ const Product_details = (props) => {
                     {isConfirmationModalOpen && (
                         <div className="modal">
                             <div className="modal-content">
-                                <p>Do you want to confirm the order?</p>
-                                <button onClick={confirmOrder}>Confirm</button>
-                                <button onClick={cancelOrder}>Cancel</button>
+                                <h3>Enter your details to confirm the order</h3>
+                                <form>
+                                    <label>
+                                        Name:
+                                        <input type="text" name="name" value={buyerDetails.name} onChange={handleInputChange} required />
+                                    </label>
+                                    <label>
+                                        Email:
+                                        <input type="email" name="email" value={buyerDetails.email} onChange={handleInputChange} required />
+                                    </label>
+                                    <label>
+                                        Phone:
+                                        <input type="text" name="phone" value={buyerDetails.phone} onChange={handleInputChange} required />
+                                    </label>
+                                    <label>
+                                        Message:
+                                        <textarea name="message" value={buyerDetails.message} onChange={handleInputChange} required></textarea>
+                                    </label>
+                                    <button type="button" onClick={confirmOrder} disabled={!isFormValid()}>
+                                        Confirm
+                                    </button>
+
+                                    <button type="button" onClick={cancelOrder}>Cancel</button>
+                                </form>
                             </div>
                         </div>
                     )}
@@ -102,7 +170,7 @@ const Product_details = (props) => {
                         <div className="order-confirmation">
                             <p>Your order has been confirmed!</p>
                             <p>An email notification has been sent to the seller.</p>
-                            <img class="confirm-gif" src={confirm_order} alt="Hurray GIF"  height="120" width="120"/>
+                            <img class="confirm-gif" src={confirm_order} alt="Hurray GIF" height="120" width="120" />
                         </div>
                     )}
 
