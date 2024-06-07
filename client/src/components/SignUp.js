@@ -2,50 +2,47 @@ import React ,{useState}from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const SignUp = (props) => {
-    const [credentials,setCrediantials]=useState({name:"",email:"",password:"",cpassword:""})
+    const [credentials,setCrediantials]=useState({name:"",email:"",password:"",cpassword:"",phone:""})
     let navigate=useNavigate();
-    const handleSubmit=async (e)=>{
+    const [shake, setShake] = useState(false); // State to control animation
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const {name,email,password}=credentials;
-       
-        const response = await fetch(` https://book-xchange.vercel.app/api/auth/createuser`, {
+        const { name, email, password, phone } = credentials;
+        // https://book-xchange.vercel.app/api/auth/createuser
+        const response = await fetch(`https://book-xchange.vercel.app/api/auth/createuser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-
             },
-            body:JSON.stringify({name:name,email:email,password:password})
-          
-
+            body: JSON.stringify({ name, email, password, phone })
         });
 
-        const json= await response.json();
-        console.log(json);
-        if(json.success){
-            //save authtoken  and redirect
-           
-      
-            localStorage.setItem("token",json.authToken)
-           
-            navigate("/")
-            props.showAlert("Signed In Succussfully","success");
+        const json = await response.json();
+        if (json.success) {
+            localStorage.setItem("token", json.authToken);
+            navigate("/");
+            props.showAlert("Signed In Successfully", "success");
+        } else {
+            props.showAlert("Invalid Details", "danger");
+            setShake(true); // Trigger shake animation
+            setTimeout(() => setShake(false), 500); // Disable animation after 500ms
         }
-        else{
-            console.log("invalid credintials",json.success)
-            props.showAlert("Invalid Details","danger")
-        }
-
-    } 
+    };
     const onChange = (e) => {
         setCrediantials({ ...credentials, [e.target.name]: e.target.value })
       }
     return (
-        <div className='signup-container'>
-        <h2>SignUp to Use iNoteBook </h2>
-        <form onSubmit={handleSubmit}>
+        <div className={`signup-container`}>
+        <h2>SignUp to Use BookXchange </h2>
+        <form onSubmit={handleSubmit} className={`${shake ? 'shake' : ''}`}>
             <div className="mb-3">
                 <label htmlFor="name" className="form-label">Name</label>
                 <input type="text" className="form-control" id="name" aria-describedby="emailHelp" name="name" onChange={onChange} value={credentials.name} required />
+                
+            </div>
+            <div className="mb-3">
+                <label htmlFor="phone" className="form-label">phone Number</label>
+                <input type="phone" className="form-control" id="phone" aria-describedby="emailHelp" name="phone" onChange={onChange} value={credentials.phone} required />
                 
             </div>
             <div className="mb-3">
