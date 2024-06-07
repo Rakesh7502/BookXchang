@@ -9,6 +9,7 @@ const nodemailer = require('nodemailer');
 //     dubug: true,
 //     secureConnection: false,
 //     auth: {
+
 //         user: 'shaikmohsin5891@gmail.com', // Your Gmail address
 //         pass: 'vrtmrhlwrihwmewr' // Your Gmail password
 //     },
