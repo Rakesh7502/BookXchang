@@ -4,6 +4,7 @@ const Books = require('../models/Books')
 const fetchuser = require("../middleware/fetchuser")
 const { body, validationResult } = require('express-validator')
 const nodemailer = require('nodemailer');
+// import f from ""
 //ROUTE 1-Get all the Books using:GET "/api/books/fetchallbooks".
 router.get('/fetchallbooks' ,async (req, res) => {
     try {
@@ -12,18 +13,18 @@ router.get('/fetchallbooks' ,async (req, res) => {
         res.json(books)
     }
     catch (error) {
-        console.error(error.message)
+        // console.error(error.message)
         return res.status(500).send("Internal Server Error")
     }
 })
 router.get('/viewBookDetails/:id' ,async (req, res) => {
     try {
         const book = await Books.findById(req.params.id )
-
+        // console.log(book)
         res.json(book)
     }
     catch (error) {
-        console.error(error.message)
+        // console.error(error.message)
         return res.status(500).send("Internal Server Error")
     }
 })
@@ -35,16 +36,28 @@ router.get('/fetchuserbooks' ,fetchuser,async (req, res) => {
         res.json(books)
     }
     catch (error) {
-        console.error(error.message)
+        // console.error(error.message)
         return res.status(500).send("Internal Server Error")
     }
 })
+const multer=require('multer')
+// const upload =multer({dest:"uploads/"})
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'src/images/')
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() 
+      cb(null,  uniqueSuffix+file.originalname)
+    }
+  })
+  
+  const upload = multer({ storage: storage })
 //ROUTE 2-Add a new Note using:POST "/api/auth/addnote".Login required
-router.post('/addbook', fetchuser,
- [body('title', "enter a valid title").isLength({min:3}), body('description', "Description must be atleast 5 characters").isLength({ min: 5 }),
- body('author', "enter the author").isLength({min:3}),body('price', "enter a price"),body('category', "enter a valid category").isLength({min:3}),
- body('seller', "enter a seller name").isLength({min:3}),body('seller_contact', "enter a valid title").isLength({min:10})], async (req, res) => {
+router.post('/addbook', fetchuser,upload.single("image"), async (req, res) => {
     try {
+        // console.log(req.body);
+        // res.send("uploaded!")
 
 
         // if there are errors, return bad request and errors
@@ -56,30 +69,53 @@ router.post('/addbook', fetchuser,
             return res.status(400).json({ errors: errors.array(), message: errors.isEmpty() })
 
         }
+        // console.log(req.body)
         const { title, description, author,price,category,seller,seller_contact,seller_gmail } = req.body;
+        const image=req.file.filename;
         const book = new Books({
-           title,  description,author,price,category,seller,seller_contact, seller_gmail,user: req.user.id
+           title,  description,author,price,category,seller,seller_contact, seller_gmail,image,user: req.user.id
 
         })
         const savedBook = await book.save()
-        // const savedNote= await Notes.create({
-        //     title: title,
-        //     description:description ,
-        //    tag:tag
-
-        // })
+       
         res.json(savedBook)
 
 
         
     }
     catch (error) {
-        console.error(error.message)
+        // console.error(error.message)
         return res.status(500).send("Internal Server Error")
     }
 
 })
+//ROUTE 4-Deleting an existing Note using:DELETE"/api/notes/updatenote".Login required
+router.delete('/deletenote/:id', fetchuser, async (req, res) => {
+    
+    try{
+    // find the note to be updated
+    // console.log(req.params)
+    let book=await Books.findById(req.params.id);
+    // console.log(note)
+    if(!book){ return res.status(404).send("Not Found")}
+    //allow deletion only id user owns this note
+    if(book.user.toString()!==req.user.id){
+        return res.status(401).send("Not Allowed");
+         
+    }
+    // console.log(req.params)
 
+    book=await Books.findOneAndDelete(book._id)
+   
+    res.json({"success":"Note has been deleted",book})
+}catch (error) {
+    // console.error(error.message)
+    return res.status(500).send("Internal Server Error")
+}
+
+
+
+})
 
 
 
