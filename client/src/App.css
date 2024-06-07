@@ -37,10 +37,7 @@
   }
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
+
 
 /* .container {
   max-width: 1200px;
@@ -52,10 +49,7 @@ body {
 } */
 
 
-body{
-  background-color: #232323;
-  color: #fff;
-}
+
 .main-content{
   width: 80%;
   padding: 10px 40px;
@@ -80,6 +74,7 @@ a{
 .page-content{
   text-align: center;
   padding-top: 40px;
+  color: white;
 }
 .products-list{
   width: 70%;
@@ -175,42 +170,82 @@ font-size: 16px;
 /* BookDetailsPage.css */
 
 /* Modal */
+/* Modal Container */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
+/* Modal Content */
 .modal-content {
-  background-color: white;
+  background-color: #fff;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
   text-align: center;
-  color: black;
-  font-size: 30px;
 }
 
-.modal button {
-  margin: 0 10px;
+.modal-content h3 {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-content label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1em;
+  color: #555;
+}
+
+.modal-content input,
+.modal-content textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.modal-content button {
   padding: 10px 20px;
-  background-color: #007bff; /* Blue */
-  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1em;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.modal button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+.modal-content button:hover {
+  background-color: #0056b3;
 }
+
+.modal-content .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-content .modal-buttons button {
+  flex: 1;
+  margin: 0 5px;
+}
+
 
 /* Order Confirmation Message */
 .order-confirmation {
@@ -677,6 +712,8 @@ text-decoration:none;
   min-height:inherit;
   position:relative;
   overflow:hidden;
+  /* background-color: white; */
+  /* border: 12px solid green; */
 }
 .testRow .testItem{
   width:100%;
@@ -1115,6 +1152,7 @@ background-color: #ffffff;
 
 body{
   background-color: #333;
+  /* color:white; */
 }
 
 
@@ -1164,4 +1202,89 @@ body{
 .container0 h3{
   color: black;
 }
+/* -------------------------------------------------------------------------------------------- */
+/* sign up */
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px;
+  /* border: 3px solid red; */
+}
+
+.signup-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: white;
+}
+
+.signup-container form {
+  /* border: 3px solid red; */
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.signup-container .form-label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.signup-container .form-control {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+}
+
+.signup-container .form-text {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.signup-container .btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.signup-container .btn:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .signup-container form {
+      padding: 20px;
+      width: 90%;
+  }
+}
+/* Define the keyframes for the shake animation */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-10px); }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+/* Apply the shake animation to the form when an error occurs */
+.signup-container .shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+
 
