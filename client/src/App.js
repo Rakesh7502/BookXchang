@@ -1,5 +1,7 @@
 
 import './App.css';
+import './home_css.css'
+import './sell.css'
 import About from './components/About';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
@@ -8,6 +10,7 @@ import SignUp from './components/SignUp';
 import Alerts from './components/Alerts';
 import { useState } from 'react';
 import BookState from './context/books/BookState';
+import Footer from './components/Footer';
 import {
   BrowserRouter as Router,
   Routes,
@@ -38,7 +41,7 @@ function App() {
           <Navbar showAlert={showAlert} />
           <Alerts alert={alert} />
 
-          <div >
+          
             <Routes>
               <Route exact path="/" element={<Home showAlert={showAlert} />} />
               <Route exact path="/about" element={<About />} />
@@ -49,8 +52,9 @@ function App() {
               <Route exact path="/buy/viewBookDetails/:id" element={<Product_details id={1}/>} />
 
             </Routes>
+            <Footer/>
 
-          </div>
+          
 
 
         </Router>
