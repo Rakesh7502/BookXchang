@@ -22,6 +22,7 @@ router.post('/createuser',
         // check weather the user with this email exists already
         try {
             let user = await User.findOne({ email: req.body.email })
+            // console.log(user)
             if (user) {
                 return res.status(400).json({ success, error: "Sorry a user with this email already exists" })
             }
@@ -32,7 +33,8 @@ router.post('/createuser',
             user = await User.create({
                 name: req.body.name,
                 password: secPass,
-                email: req.body.email
+                email: req.body.email,
+                phone:req.body.phone
 
             })
 
@@ -48,7 +50,7 @@ router.post('/createuser',
             res.json({ success, authToken })
 
         } catch (error) {
-            console.error(error.message)
+            // console.error(error.message)
             return res.status(500).send("Internal Server Error")
         }
 
@@ -88,7 +90,7 @@ router.post('/login', [
         res.json({ success, authtoken });
 
     } catch (error) {
-        console.error(error.message)
+        // console.error(error.message)
         return res.status(500).send("Internal Server Error")
     }
 
@@ -104,7 +106,7 @@ router.post('/getuser', fetchuser, async (req, res) => {
 
 
     } catch (error) {
-        console.error(error.message)
+        // console.error(error.message)
         return res.status(500).send("Internal Server Error")
     }
 
