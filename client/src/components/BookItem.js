@@ -1,7 +1,7 @@
 import { React, useContext,useEffect  } from 'react'
 import bookContext from '../context/books/bookContext';
 import { useNavigate} from 'react-router-dom';
-import java2 from './java2.webp'
+// import java2 from './java2.webp'
 const BookItem = (props) => {
     const context = useContext(bookContext);
     
@@ -27,6 +27,7 @@ const BookItem = (props) => {
     const viewDetails = (id) => {
       
         viewBook(id)
+        
         navigate(`/buy/viewBookDetails/${id}`)
      
 
@@ -40,7 +41,8 @@ const BookItem = (props) => {
         <div className="products-list">
             <div className="products-detail">
                 <div className="product-image">
-                    <img src={java2} height="120" width="120">
+                    {/* {console.log(books.image)} */}
+                    <img src={require(`../images/${books.image}`)} height="120" width="120">
 
                     </img>
                 </div>
@@ -49,7 +51,7 @@ const BookItem = (props) => {
                     {/* <p><span>Book Name:</span>Name</p> */}
                     <p><span>author:</span>{books.author}</p>
 
-                    <p><span>description:</span>{books.description}</p>
+                    <p><span>description:</span>{books.description.slice(0,50)}...</p>
                     <p><span>category:</span>{books.category}</p>
 
                 </div>
