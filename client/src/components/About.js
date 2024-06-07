@@ -1,6 +1,6 @@
 
 import { useEffect, React, useState } from 'react';
-import CountUp from 'react-countup';
+// import CountUp from 'react-countup';
 import bookXchangeintro from '../assets/bookXchange-intro.png'
 import bookXchangemission from '../assets/bookXchange-mission.png'
 import bookXchangevission from '../assets/bookXchange-vision.png'
