@@ -3,6 +3,7 @@ import bookContext from "./bookContext";
 
 const BookState = (props) => {
     const host = "https://book-xchange.vercel.app"
+    // const host = "http://localhost:9000"
     const BooksInitial = [];
     const prod_info = [];
     const [books, setBooks] = useState(BooksInitial)
@@ -12,6 +13,28 @@ const BookState = (props) => {
         //TODO:API Call
         if (localStorage.getItem('token')) {
             const response = await fetch(`${host}/api/books/fetchallbooks`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'auth-token': localStorage.getItem('token')
+
+                },
+
+
+            });
+            const json = await response.json();
+           
+           setBooks(json);
+        }
+
+
+
+    }
+    //fetch user books
+    const getUserBooks = async () => {
+        //TODO:API Call
+        if (localStorage.getItem('token')) {
+            const response = await fetch(`${host}/api/books/fetchuserbooks`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -53,26 +76,76 @@ const BookState = (props) => {
     
     }
     //send notification to seller
-    const sendEmailToSeller=async(id,sellerEmail,bookTitle)=>{
+    const sendEmailToSeller=async(book_details,buyerDetails)=>{
         if (localStorage.getItem('token')) {
-            const response = await fetch(`${host}/api/books/viewBookDetails/${id}`, {
+            const response = await fetch(`${host}/api/books/viewBookDetails/${book_details._id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'auth-token': localStorage.getItem('token')
 
                 },
-                body: JSON.stringify({sellerEmail,bookTitle })
+                body: JSON.stringify({book_details,buyerDetails })
 
 
             });
             const json = await response.json();
-            console.log(sellerEmail,bookTitle)
-           // setBookDetails(json);
+            // console.log(sellerEmail,bookTitle)
+        //    setBookDetails(json);
           
         }
 
     }
+    const addBook = async (formPayload) => {
+        //TODO:API Call
+        // console.log("addddd")
+        // console.log(image)
+        const response = await fetch(`${host}/api/books/addbook`, {
+            method: 'POST',
+            headers: {
+                
+              
+                
+                'auth-token': localStorage.getItem('token')
+
+            },
+            body: formPayload
+
+        });
+        const json = await response.json();
+        // console.log(json);
+        // console.log("enrered add book")
+        
+        // setBooks(books.concat(json));
+
+
+        // setNotes(json)
+
+
+    }
+    //delete a note
+    const deleteBook = async (id) => {
+            //TODO: api
+    
+            // console.log("in background")
+            // console.log(id)
+            const response = await fetch(`${host}/api/books/deletenote/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                   
+                    'auth-token': localStorage.getItem('token')
+    
+                },
+    
+    
+            });
+            const json = await response.json();
+            // console.log(json)
+            const newBook = books.filter((book) => { return book._id !== id })
+            setBooks(newBook)
+    
+        }
     
     
  
@@ -80,7 +153,7 @@ const BookState = (props) => {
 
   
     return (
-        <bookContext.Provider value={{ books,book_details, getBooks,viewBook ,sendEmailToSeller}} >
+        <bookContext.Provider value={{ books,book_details,deleteBook,addBook, getBooks,viewBook ,sendEmailToSeller,getUserBooks }} >
             {props.children}
         </bookContext.Provider>
 
