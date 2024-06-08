@@ -12,7 +12,7 @@ const Login = (props) => {
         e.preventDefault();
         // console.log(credentials.email)
         // https://book-xchange-client-bbcxkbvar-shaik-mosins-projects.vercel.app/
-        const response = await fetch(`https://book-xchange-client-bbcxkbvar-shaik-mosins-projects.vercel.app/auth/login`, {
+        const response = await fetch(`https://book-xchange-client.vercel.app/api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
