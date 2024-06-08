@@ -13,6 +13,7 @@ app.use(cors({
     credentials: true
 }))
 
+
 app.use(express.json())
 //available routess
 app.get("/",(req,res)=>{res.json("Hello")})
