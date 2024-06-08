@@ -12,8 +12,6 @@ app.use(cors({
    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }))
-
-
 app.use(express.json())
 //available routess
 app.get("/",(req,res)=>{res.json("Hello")})
