@@ -10,27 +10,35 @@ const BookState = (props) => {
     const [books, setBooks] = useState(BooksInitial)
     const [book_details, setBookDetails] = useState(prod_info)
     //get all books 
-    const getBooks = async () => {
-        //TODO:API Call
-        if (localStorage.getItem('token')) {
+const getBooks = async () => {
+    // Check if token exists
+    const token = localStorage.getItem('token');
+    if (token) {
+        try {
             const response = await fetch(`${host}/api/books/fetchallbooks`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'auth-token': localStorage.getItem('token')
-
-                },
-
-
+                    'auth-token': token
+                }
             });
+
+            // Check if response is ok
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // Parse JSON response
             const json = await response.json();
-           
-           setBooks(json);
+            setBooks(json);
+        } catch (error) {
+            console.error('Failed to fetch user books:', error);
         }
-
-
-
+    } else {
+        console.error('No auth token found in local storage');
     }
+};
+
     //fetch user books
     const getUserBooks = async () => {
         //TODO:API Call
