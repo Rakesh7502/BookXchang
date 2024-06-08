@@ -29,6 +29,7 @@ const Buy = (props) => {
     
         <h2>Books</h2>
         <div className="container mx-2">
+    {console.log(books)}
           {books.length === 0 && "No Books available to Buy"}
 
         </div>
