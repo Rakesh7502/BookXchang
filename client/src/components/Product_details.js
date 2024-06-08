@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const Product_details = (props) => {
     const { id } = useParams()
     const navigate = useNavigate();
+    
     const context = useContext(bookContext)
     const { book_details, sendEmailToSeller, viewBook } = context
     const [isLoading, setIsLoading] = useState(true);
