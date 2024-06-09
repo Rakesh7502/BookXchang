@@ -27,6 +27,8 @@ const BookState = (props) => {
            console.log(json);
            setBooks(json);
         }
+        console.log("entered Bookstate");
+        console.log(book_details)
 
 
 
