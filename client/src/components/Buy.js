@@ -13,6 +13,7 @@ const Buy = (props) => {
     if (localStorage.getItem('token')) {
 
       getBooks()
+      console.log(books)
     }
     else {
       navigate("/login")
