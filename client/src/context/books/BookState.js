@@ -12,6 +12,7 @@ const BookState = (props) => {
     //get all books 
     const getBooks = async () => {
         //TODO:API Call
+        console.log("entered Bookstate-get Books");
         if (localStorage.getItem('token')) {
             const response = await fetch(`${host}/api/books/fetchallbooks`, {
                 method: 'GET',
