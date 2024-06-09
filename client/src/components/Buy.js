@@ -7,6 +7,8 @@ const Buy = (props) => {
   const context = useContext(bookContext);
   const { books, getBooks } = context;
   const navigate = useNavigate();
+   console.log("context")
+  console.log(context);
 
   
   useEffect(() => {
