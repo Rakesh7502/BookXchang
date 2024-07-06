@@ -42,8 +42,7 @@ const BookItem = (props) => {
         <div className="products-list">
             <div className="products-detail">
                 <div className="product-image">
-                    // {/* {console.log(books.image)} */}
-        {console.log(books)}
+                    
                     <img src={require(`../images/${books.image}`)} height="120" width="120">
 
                     </img>
