@@ -12,7 +12,6 @@ const Sell = () => {
  
   const [showAlert, setShowAlert] = useState(false);
  
-
   const [errorMessage, setErrorMessage] = useState('');
   const {addBook}=context;
   const [book,setBook]=useState({title:"",description:"",image:null,author:" ",price:'',category:'',seller:'',seller_contact:'',seller_gmail:'',image:null}) 
